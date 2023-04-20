@@ -84,10 +84,22 @@ static PartTable def_part_table =
                         end_cyl: cyl4size(0xC800),
                         abs_start_sec: 0x5000,
                         sec_in_part: 0xC800 // 25 Mbyte
+                },
+                {
+                        boot_type: 0x00,
+                        start_head: head4size(0x11800),
+                        start_sec: sec4size(0x11800),
+                        start_cyl: cyl4size(0x11800),
+                        part_type: 0x83,
+                        end_head: head4size(0x19000),
+                        end_sec: sec4size(0x19000),
+                        end_cyl: cyl4size(0x19000),
+                        abs_start_sec: 0x11800,
+                        sec_in_part: 0x7800 // 15 Mbyte
                 }
         };
 
-static unsigned int def_log_part_br_abs_start_sector[] = {0x5000, 0xC800};
+static unsigned int def_log_part_br_abs_start_sector[] = {0x5000, 0xC800, 0x11800};
 static const PartTable def_log_part_table[] =
         {
                 {
@@ -116,6 +128,20 @@ static const PartTable def_log_part_table[] =
                                 end_cyl: cyl4size(0xC800),
                                 abs_start_sec: 0x5000,
                                 sec_in_part: 0xC800 // 25 Mbyte
+                        }
+                },
+                {
+                        {
+                            boot_type: 0x00,
+                            start_head: head4size(0x11800),
+                            start_sec: sec4size(0x11800),
+                            start_cyl: cyl4size(0x11800),
+                            part_type: 0x83,
+                            end_head: head4size(0x19000),
+                            end_sec: sec4size(0x19000),
+                            end_cyl: cyl4size(0x19000),
+                            abs_start_sec: 0x11800,
+                            sec_in_part: 0x7800 // 15 Mbyte
                         }
                 }
         };

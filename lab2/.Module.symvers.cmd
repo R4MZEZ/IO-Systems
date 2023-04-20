@@ -1,1 +1,0 @@
-cmd_/home/roman/IO-Systems/lab2/Module.symvers := sed 's/\.ko$$/\.o/' /home/roman/IO-Systems/lab2/modules.order | scripts/mod/modpost -m -a  -o /home/roman/IO-Systems/lab2/Module.symvers -e -i Module.symvers   -T -
