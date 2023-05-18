@@ -1,3 +1,2 @@
-dmesg -C
-echo -n "hello" | nc -u -w1 192.168.0.101 12345
-dmesg
+echo -n "peace death" | nc -u -w1 192.168.0.104 12345
+

@@ -1,0 +1,1 @@
+cmd_/home/roman/IO-Systems/lab3/virt_net_if.ko := ld -r -m elf_x86_64 -z noexecstack --build-id=sha1  -T scripts/module.lds -o /home/roman/IO-Systems/lab3/virt_net_if.ko /home/roman/IO-Systems/lab3/virt_net_if.o /home/roman/IO-Systems/lab3/virt_net_if.mod.o;  true

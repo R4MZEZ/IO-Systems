@@ -20,6 +20,8 @@ static char* ifname = "vni%d";
 static unsigned char data[1500];
 static unsigned char stat_data[2048];
 static struct proc_dir_entry *entry;
+static int datagram_count = 0;
+static int ok_count = 0;
 
 static struct net_device_stats stats;
 
@@ -75,7 +77,11 @@ static char check_frame(struct sk_buff *skb, unsigned char data_shift) {
         int res = strcmp(MAGIC_STRING, data);
         unsigned char tmp_buf[1024];
 
+        printk(KERN_INFO "Received datagram...");
+        
         if (res == 0){
+            ok_count++;
+            printk(KERN_INFO "MAGIC STRING SPOTTED");
             sprintf(tmp_buf, "Captured UDP datagram, saddr: %d.%d.%d.%d\n",
                    ntohl(ip->saddr) >> 24, (ntohl(ip->saddr) >> 16) & 0x00FF,
                    (ntohl(ip->saddr) >> 8) & 0x0000FF, (ntohl(ip->saddr)) & 0x000000FF);
@@ -88,8 +94,11 @@ static char check_frame(struct sk_buff *skb, unsigned char data_shift) {
             strcat(stat_data, tmp_buf);
             sprintf(tmp_buf, "%s\n\n", data);
             strcat(stat_data, tmp_buf);
+        }else{
+            printk(KERN_INFO "Datagram doesn't contain magic string.");
         }
 
+        printk(KERN_INFO "OK: %d, NOT_OK: %d", ok_count, ++datagram_count-ok_count);
         return 1;
 
     }
